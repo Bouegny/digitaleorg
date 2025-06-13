@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITALECOM - Agence de Communication Digitale</title>
+    <meta name="description" content="DIGITALECOM, votre partenaire en communication digitale, design graphique, développement web et community management.">
+    <meta name="keywords" content="communication digitale, design graphique, développement web, community management, création de contenu, agence web">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="Images/IMAGE POUR SITE DIGITALECOM_SERVICES/icone digitalecom.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bleu-fonce: #0A0F2C;
+            --bleu-clair: #246BFD;
+            --blanc: #FFFFFF;
+            --gris-clair: #e8e8e8db;
+            --texte-fonce: #333333;
+            --ombre-legere: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --transition-rapide: all 0.3s ease-in-out;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; background-color: var(--gris-clair); color: var(--texte-fonce); overflow-x: hidden; }
+        html { scroll-behavior: smooth; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 20px 0; }
+        header { background-color: var(--blanc); padding: 1rem 0; position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; box-shadow: var(--ombre-legere); }
+        header .container { display: flex; justify-content: space-between; align-items: center; padding: 0 5%; }
+        .logo { font-size: 1.8rem; font-weight: bold; text-decoration: none; }
+        .logo .digitale { color: var(--bleu-clair); }
+        .logo .com { color: var(--gris-clair); }
+        nav ul { list-style: none; display: flex; }
+        nav ul li { margin-left: 25px; }
+        nav ul li a { text-decoration: none; color: var(--bleu-fonce); font-weight: 600; padding: 0.5rem 0.8rem; border-radius: 5px; transition: var(--transition-rapide); }
+        nav ul li a:hover, nav ul li a.active { background-color: var(--bleu-clair); color: var(--blanc); }
+        .menu-toggle { display: none; font-size: 1.5rem; background: none; border: none; color: var(--bleu-fonce); cursor: pointer; }
+        .page-section { padding: 80px 0 40px; min-height: 80vh; display: none; }
+        .page-section:first-of-type { display: block; }
+        .page-section h2 { text-align: center; font-size: 2.5rem; color: var(--bleu-fonce); margin-bottom: 40px; position: relative; }
+        .page-section h2::after { content: ''; display: block; width: 60px; height: 4px; background-color: var(--bleu-clair); margin: 10px auto 0; border-radius: 2px; }
+        #accueil { background: linear-gradient(rgba(10, 43, 115, 0.664), rgba(10, 43, 115, 0.182)), url('Images/IMAGE POUR SITE DIGITALECOM_SERVICES/banniere digi.jpg ') no-repeat center center/cover; color: var(--blanc); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 100vh; padding-top: 60px; }
+        #accueil h1 { font-size: 3.5rem; margin-bottom: 20px; }
+        #accueil h1 .digitale { color: var(--bleu-clair); }
+        #accueil h1 .com { color: var(--gris-clair); }
+        #accueil p { font-size: 1.3rem; margin-bottom: 100px; max-width: 9000px; }
+        .cta-button { background-color: var(--bleu-clair); color: var(--blanc); padding: 12px 25px; text-decoration: none; font-size: 1.1rem; border-radius: 25px; transition: var(--transition-rapide); border: 2px solid var(--bleu-clair); }
+        .cta-button:hover { background-color: var(--bleu-fonce); border-color: var(--bleu-fonce); transform: translateY(-3px); }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .grid-item { background-color: var(--blanc); padding: 25px; border-radius: 8px; box-shadow: var(--ombre-legere); text-align: center; transition: transform 0.3s ease, opacity 0.3s ease; opacity: 1; display: block; }
+        .grid-item.hidden { opacity: 0; transform: scale(0.9); display: none; }
+        .grid-item:hover { transform: translateY(-5px); }
+        .grid-item img.lightboxable { cursor: pointer; /* Rendre les images cliquables pour la lightbox */ }
+        .grid-item img { width: 100%; max-width: 300px; height: auto; border-radius: 5px; margin-bottom: 15px; }
+        .grid-item .team-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid var(--bleu-clair); cursor: default; }
+        .grid-item h3 { color: var(--bleu-fonce); margin-bottom: 10px; font-size: 1.5rem; }
+        .grid-item p { font-size: 0.95rem; color: #555; }
+        #a-propos .content-split { display: flex; gap: 30px; align-items: center; flex-wrap: wrap; }
+        #a-propos .content-split div { flex: 1; min-width: 300px; }
+        #a-propos img { width: 100%; max-width: 450px; border-radius: 8px; box-shadow: var(--ombre-legere); }
+        #a-propos h3 { color: var(--bleu-fonce); margin-top: 20px; margin-bottom: 10px; }
+        .blog-post-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .blog-post { background-color: var(--blanc); padding: 0; margin-bottom: 20px; border-radius: 8px; box-shadow: var(--ombre-legere); overflow: hidden; display: flex; flex-direction: column; }
+        .blog-post img { width: 100%; height: 200px; object-fit: cover; display: block; }
+        .blog-post-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column;}
+        .blog-post h3 { color: var(--bleu-fonce); margin-bottom: 10px; font-size: 1.3rem; }
+        .blog-summary { margin-bottom: 15px; font-size: 0.9rem; line-height: 1.5; }
+        .blog-full-text { display: none; font-size: 0.9rem; line-height: 1.5; margin-bottom:15px; }
+        .blog-full-text p { margin-bottom: 10px; }
+        .read-more-link { color: var(--bleu-clair); text-decoration: none; font-weight: bold; display: inline-block; margin-top: auto; cursor: pointer; }
+        .read-more-link:hover { text-decoration: underline; }
+        .portfolio-filters { text-align: center; margin-bottom: 30px; }
+        .portfolio-filters button { background-color: var(--blanc); color: var(--bleu-fonce); border: 2px solid var(--bleu-clair); padding: 8px 18px; margin: 5px; border-radius: 20px; cursor: pointer; font-weight: 600; transition: var(--transition-rapide); }
+        .portfolio-filters button:hover, .portfolio-filters button.active { background-color: var(--bleu-clair); color: var(--blanc); }
+        .formspree-form { background-color: var(--blanc); padding: 30px; border-radius: 8px; box-shadow: var(--ombre-legere); max-width: 700px; margin: 0 auto; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--bleu-fonce); }
+        .form-group input[type="text"], .form-group input[type="email"], .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-family: 'Segoe UI', sans-serif; font-size: 1rem; }
+        .form-group input[type="text"]:focus, .form-group input[type="email"]:focus, .form-group textarea:focus { outline: none; border-color: var(--bleu-clair); box-shadow: 0 0 5px rgba(0, 207, 255, 0.5); }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .formspree-form button[type="submit"] { background-color: var(--bleu-clair); color: var(--blanc); padding: 12px 25px; border: none; border-radius: 25px; font-size: 1.1rem; cursor: pointer; transition: var(--transition-rapide); display: block; margin: 0 auto; }
+        .formspree-form button[type="submit"]:hover { background-color: var(--bleu-fonce); }
+        .contact-info { text-align: center; margin-top: 40px; }
+        .contact-info p { font-size: 1.1rem; margin-bottom: 10px; }
+        .contact-info a { color: var(--bleu-fonce); text-decoration: none; }
+        .contact-info a:hover { color: var(--bleu-clair); }
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25D366; color: var(--blanc); border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 6px rgba(0,0,0,0.3); z-index: 100; display: flex; justify-content: center; align-items: center; text-decoration: none; transition: var(--transition-rapide); }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #1DAE54; }
+        .whatsapp-float svg { width: 30px; height: 30px; fill: currentColor; }
+        footer { background-color: var(--bleu-fonce); color: var(--blanc); padding: 40px 0 20px; margin-top: 40px; font-size: 0.9rem; }
+        footer .container { display: flex; flex-direction: column; gap: 30px; }
+        .footer-top-row { display: flex; flex-wrap: wrap; gap: 30px; justify-content: space-between; }
+        .footer-col-info { flex: 1; min-width: 280px; }
+        .footer-logo { font-size: 2rem; font-weight: bold; margin-bottom: 10px; display: block; text-decoration: none; }
+        .footer-logo .digitale { color: var(--bleu-clair); }
+        .footer-logo .com { color: var(--gris-clair); }
+        .footer-logo .slogan { font-size: 0.5em; display: block; font-weight: normal; line-height: 1.2; letter-spacing: 1px; margin-top: -5px; color: var(--blanc); }
+        .footer-col-info h4 { font-size: 1.2rem; margin-bottom: 10px; }
+        .footer-col-info h4 .digitale { color: var(--bleu-clair); }
+        .footer-col-info h4 .com { color: var(--gris-clair); }
+        .footer-col-info p { margin-bottom: 8px; line-height: 1.5; }
+        .footer-col-info .phone-number { display: flex; align-items: center; gap: 8px; margin-bottom: 15px; }
+        .footer-social-icons { display: flex; gap: 10px; margin-bottom: 20px; }
+        .footer-social-icons a { color: var(--blanc); background-color: rgba(255, 255, 255, 0.1); width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; border-radius: 8px; text-decoration: none; font-size: 1.2rem; transition: var(--transition-rapide); }
+        .footer-social-icons a:hover { background-color: var(--bleu-clair); color: var(--bleu-fonce); }
+        .footer-col-newsletter { flex: 1.5; min-width: 300px; }
+        .footer-col-newsletter h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .newsletter-form-footer { display: flex; margin-bottom: 15px; }
+        .newsletter-form-footer input[type="email"] { flex-grow: 1; padding: 12px 15px; border: none; border-radius: 25px 0 0 25px; font-size: 1rem; outline: none; color: var(--texte-fonce); }
+        .newsletter-form-footer button[type="submit"] { background-color: var(--bleu-clair); color: var(--blanc); border: none; padding: 12px 20px; border-radius: 0 25px 25px 0; font-size: 1rem; font-weight: bold; cursor: pointer; transition: var(--transition-rapide); }
+        .newsletter-form-footer button[type="submit"]:hover { background-color: var(--bleu-fonce); }
+        .newsletter-consent { font-size: 0.8rem; line-height: 1.4; color: #ccc; }
+        .newsletter-consent label { display: flex; align-items: flex-start; margin-bottom: 10px; cursor: pointer; }
+        .newsletter-consent input[type="checkbox"] { margin-right: 8px; width: auto; height: auto; opacity: 1; position: static; }
+        .toggle-switch { display: none; }
+        .newsletter-consent a { color: var(--blanc); text-decoration: underline; }
+        .newsletter-consent a:hover { color: var(--bleu-clair); }
+        .footer-middle-links { display: flex; flex-wrap: wrap; gap: 15px 30px; padding: 20px 0; border-top: 1px solid rgba(255, 255, 255, 0.1); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .footer-middle-links a { color: var(--blanc); text-decoration: none; font-size: 0.9rem; }
+        .footer-middle-links a:hover { color: var(--bleu-clair); }
+        .footer-bottom-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 15px; font-size: 0.85rem; padding-top: 20px; }
+        .footer-bottom-links a { color: var(--blanc); text-decoration: none; margin-left: 15px; }
+        .footer-bottom-links a:first-child { margin-left: 0; }
+        .footer-bottom-links a:hover { color: var(--bleu-clair); }
+        .footer-copyright, .footer-infocob { flex-shrink: 0; }
+        #mentions-legales h3 { font-size: 1.5rem; color: var(--bleu-fonce); margin-top: 30px; margin-bottom: 15px; text-align: left; }
+        #mentions-legales h3::after { display: none; }
+        #mentions-legales p, #mentions-legales ul { margin-bottom: 15px; text-align: left; }
+        #mentions-legales ul { list-style-position: inside; padding-left: 20px; }
+
+        .lightbox { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.85); justify-content: center; align-items: center; }
+        .lightbox-content { position: relative; margin: auto; padding: 0; max-width: 90%; max-height: 85vh; display: flex; justify-content: center; align-items: center; }
+        .lightbox-content-img { display: block; max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 5px; box-shadow: 0 0 25px rgba(0,0,0,0.5); }
+        .lightbox-close { position: absolute; top: 15px; right: 35px; color: var(--blanc); font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer; z-index: 2001; }
+        .lightbox-close:hover, .lightbox-close:focus { color: #bbb; text-decoration: none; }
+        .lightbox-prev, .lightbox-next { cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px; margin-top: -30px; color: white; font-weight: bold; font-size: 24px; transition: 0.6s ease; border-radius: 0 3px 3px 0; user-select: none; background-color: rgba(0,0,0,0.3); z-index: 2001; }
+        .lightbox-prev { left: 10px; border-radius: 3px 0 0 3px; }
+        .lightbox-next { right: 10px; border-radius: 0 3px 3px 0; }
+        .lightbox-prev:hover, .lightbox-next:hover { background-color: rgba(0,0,0,0.6); }
+        .lightbox-prev.disabled, .lightbox-next.disabled { opacity: 0.3; cursor: default; }
+
+        @media (max-width: 992px) {
+            .footer-top-row { flex-direction: column; }
+            .footer-col-info, .footer-col-newsletter { min-width: 100%; }
+        }
+        @media (max-width: 768px) {
+            header .container { flex-direction: column; align-items: flex-start; }
+            .logo { margin-bottom: 10px; align-self: center; }
+            .menu-toggle { display: block; position: absolute; top: 15px; right: 20px; font-size: 2rem; }
+            nav { width: 100%; margin-top: 10px; }
+            nav ul { display: none; flex-direction: column; width: 100%; background-color: var(--blanc); padding-bottom: 10px; }
+            nav ul.active { display: flex; }
+            nav ul li { margin: 10px 0; text-align: center; }
+            nav ul li a { display: block; padding: 10px; }
+            #accueil h1 { font-size: 2.5rem; }
+            #accueil p { font-size: 1.1rem; }
+            .page-section h2 { font-size: 2rem; }
+            .grid-container, .blog-post-container { grid-template-columns: 1fr; }
+            .portfolio-filters button { padding: 8px 12px; margin: 3px; font-size: 0.9rem; }
+            #a-propos .content-split { flex-direction: column; }
+            #a-propos .content-split img { margin-bottom: 20px; }
+            .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 24px; }
+            .whatsapp-float svg { width: 24px; height: 24px; }
+            .footer-middle-links { flex-direction: column; gap: 10px; align-items: center; }
+            .footer-bottom-row { flex-direction: column; align-items: center; text-align: center; }
+            .footer-bottom-links { display: flex; flex-direction: column; gap: 8px; }
+            .footer-bottom-links a { margin-left: 0; }
+            .newsletter-form-footer { flex-direction: column; }
+            .newsletter-form-footer input[type="email"] { border-radius: 25px; margin-bottom: 10px; text-align: center; }
+            .newsletter-form-footer button[type="submit"] { border-radius: 25px; }
+            .lightbox-prev, .lightbox-next { font-size: 18px; padding: 12px; }
+            .lightbox-close { font-size: 30px; top: 10px; right: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="#accueil" class="logo nav-link">
+                <span class="digitale">DIGITALE</span><span class="com">COM</span>
+            </a>
+            <button class="menu-toggle" aria-label="Ouvrir le menu">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="#accueil" class="nav-link active">Accueil</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#a-propos" class="nav-link">À propos</a></li>
+                    <li><a href="#equipe" class="nav-link">Équipe</a></li>
+                    <li><a href="#galerie" class="nav-link">Galerie</a></li>
+                    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                    <li><a href="#blog" class="nav-link">Blog</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="accueil" class="page-section">
+            <div class="container">
+                <h1>Bienvenue chez <span class="digitale">DIGITALE</span><span class="com">COM</span></h1>
+                <p>Votre partenaire en communication digitale, design graphique, développement web et bien plus encore.<br>
+                     Nous donnons vie à vos idées en numériques.</p>
+                <a href="#contact" class="cta-button nav-link">Parlons de votre projet</a>
+            </div>
+        </section>
+        <section id="services" class="page-section">
+            <div class="container">
+                <h2>Nos Services</h2>
+                <div class="grid-container">
+                    <div class="grid-item"> <img src="Images/IMAGE POUR SITE DIGITALECOM_SERVICES/1.jpg " alt="Service Design Graphique" class="lightboxable"><h3>Design Graphique</h3><p>Création d'identités visuelles uniques, logos, chartes graphiques, supports de communication percutants.</p></div>
+                    <div class="grid-item"> <img src="Images/IMAGE POUR SITE DIGITALECOM_SERVICES/5.jpg " alt="Service Développement Web" class="lightboxable"><h3>Développement Web</h3><p>Conception de sites vitrines, e-commerce, applications web sur mesure, modernes et responsives.</p></div>
+                    <div class="grid-item"> <img src="Images/IMAGE POUR SITE DIGITALECOM_SERVICES/7.jpg " alt="Service Community Management" class="lightboxable"><h3>Community Management</h3><p>Gestion et animation de vos réseaux sociaux, création de communautés engagées, stratégies de contenu.</p></div>
+                    <div class="grid-item"> <img src="Images/IMAGE POUR SITE DIGITALECOM_SERVICES/2.jpg " alt="Service Création de Contenu" class="lightboxable"><h3>Création de Contenu</h3><p>Rédaction web optimisée SEO, création de vidéos, infographies, et autres contenus engageants.</p></div>
+                </div>
+            </div>
+        </section>
+        <section id="a-propos" class="page-section">
+            <div class="container">
+                <h2>À Propos de Nous</h2>
+                <div class="content-split">
+                     <div>
+                        <p>DIGITALECOM est une agence passionnée par le digital et la créativité. Fondée par BOUEGNY Luce Maxi, notre mission est d'accompagner les entreprises et les professionnels dans leur transformation numérique et de les aider à atteindre leurs objectifs grâce à des stratégies de communication innovantes et efficaces.</p>
+                        <p>Nous croyons en la puissance d'une communication bien pensée, d'un design soigné et d'une présence en ligne optimisée. Notre approche est centrée sur le client, la transparence et les résultats.</p>
+                        <h3>Nos Valeurs</h3>
+                        <ul>
+                            <li><strong>Créativité :</strong> Innover constamment pour proposer des solutions originales.</li>
+                            <li><strong>Engagement :</strong> Nous impliquer pleinement dans la réussite de vos projets.</li>
+                            <li><strong>Transparence :</strong> Une communication claire et honnête à chaque étape.</li>
+                            <li><strong>Excellence :</strong> Viser la plus haute qualité dans toutes nos réalisations.</li>
+                        </ul>
+                    </div>
+                    <div>
+                    <div><img src="Images/IMAGE POUR SITE DIGITALECOM_SERVICES/a propos1.jpg " alt="Image de l'agence"></div>
+                </div>
+            </div>
+        </section>
+        <section id="equipe" class="page-section">
+            <div class="container">
+                <h2>Notre Équipe</h2>
+                <div class="grid-container">
+                    <div class="grid-item"><img src="Photos d'équipes/IMG_20240825_224413_032-removebg-preview.png" alt="M.BOUEGNY Luce Maxi" class="team-img"><h3>M.BOUEGNY Luce Maxi</h3><p>Fondateur & Chef de Projet</p></div>
+                    <div class="grid-item"><img src="Images/IMAGE POUR SITE DIGITALECOM_SERVICES/icone digitalecom.png " alt="Postuler" class="team-img"><h3>Postuler</h3><p>Designer Graphique</p></div>
+                    <div class="grid-item"><img src="Images/IMAGE POUR SITE DIGITALECOM_SERVICES/icone digitalecom.png " alt="Postuler" class="team-img"><h3>Postuler</h3><p>Développeur Web</p></div>
+                    <div class="grid-item"><img src="Photos d'équipes/M.MVE MVE Jules.jpg " alt="M.MVE MVE Jules" class="team-img"><h3>M.MVE MVE Jules</h3><p>Community Manager</p></div>
+                </div>
+            </div>
+        </section>
+        <section id="galerie" class="page-section">
+            <div class="container">
+                <h2>Galerie</h2>
+                <div class="grid-container gallery-grid">
+                    <div class="grid-item"><img src="Galerie &  Portfolio/banniere GBM.png " alt="Image Galerie 1 f hj kkxd" class="lightboxable"></div>
+                    <div class="grid-item"><img src="Galerie &  Portfolio/Capture d'écran 2025-04-06 170904.png " alt="Image Galerie 2" class="lightboxable"></div>
+                    <div class="grid-item"><img src="Galerie &  Portfolio/19.jpg " alt="Image Galerie 3" class="lightboxable"></div>
+                    <div class="grid-item"><img src="Galerie &  Portfolio/Bonne fête de la pentecote.jpg " alt="Image Galerie 4" class="lightboxable"></div>
+                    <div class="grid-item"><img src=" Galerie &  Portfolio/bonne fête2.jpg" alt="Image Galerie 5" class="lightboxable"></div>
+                    <div class="grid-item"><img src=" Galerie &  Portfolio/9.jpg" alt="Image Galerie 6" class="lightboxable"></div>
+                    <div class="grid-item"><img src="Galerie &  Portfolio/flyer eatgrill.jpg " alt="Image Galerie 7" class="lightboxable"></div>
+                    <div class="grid-item"><img src="Galerie &  Portfolio/Gestion d'Inventaire.jpg " alt="Image Galerie 8" class="lightboxable"></div>
+                    <div class="grid-item"><img src="Galerie &  Portfolio/11.jpg " alt="Image Galerie 9" class="lightboxable"></div>
+                    <div class="grid-item"><img src=" Galerie &  Portfolio/12.jpg" alt="Image Galerie 10" class="lightboxable"></div>
+                    <div class="grid-item"><img src="Galerie &  Portfolio/13.jpg " alt="Image Galerie 11" class="lightboxable"></div>
+                    <div class="grid-item"><img src=" Galerie &  Portfolio/14.jpg" alt="Image Galerie 12" class="lightboxable"></div>
+                    <div class="grid-item"><img src=" Galerie &  Portfolio/15.jpg" alt="Image Galerie 13" class="lightboxable"></div>
+                    <div class="grid-item"><img src=" Galerie &  Portfolio/16.jpg" alt="Image Galerie 14" class="lightboxable"></div>
+                    <div class="grid-item"><img src=" Galerie &  Portfolio/17.jpg" alt="Image Galerie 15" class="lightboxable"></div>
+                    <div class="grid-item"><img src=" Galerie &  Portfolio/18.jpg" alt="Image Galerie 16" class="lightboxable"></div>
+                    <div class="grid-item"><img src="Galerie &  Portfolio/AJD1A.jpg " alt="Image Galerie 17" class="lightboxable"></div>
+                    <div class="grid-item"><img src="Galerie &  Portfolio/Logo_principal_association-removebg-preview.png " alt="Image Galerie 18" class="lightboxable"></div>
+                </div>
+            </div>
+        </section>
+        <section id="portfolio" class="page-section">
+            <div class="container">
+                <h2>Notre Portfolio</h2>
+                <div class="portfolio-filters">
+                    <button type="button" class="filter-btn active" data-filter="all">All</button>
+                    <button type="button" class="filter-btn" data-filter="branding">Branding</button>
+                    <button type="button" class="filter-btn" data-filter="logo">Logo</button>
+                    <button type="button" class="filter-btn" data-filter="publicite">Publicité</button>
+                    <button type="button" class="filter-btn" data-filter="reseaux-sociaux">Réseaux Sociaux</button>
+                    <button type="button" class="filter-btn" data-filter="site-web">Site Web</button>
+                    <button type="button" class="filter-btn" data-filter="edition">Édition</button>
+                    <button type="button" class="filter-btn" data-filter="apps">Apps</button>
+                </div>
+                <div class="grid-container portfolio-grid">
+                    <div class="grid-item" data-category="site-web branding"><img src=" Galerie &  Portfolio/19.jpg" alt="Projet Alpha " class="lightboxable"><h3>Projet Alpha</h3><p>Refonte site web et identité.</p></div>
+                    <div class="grid-item" data-category="logo reseaux-sociaux"><img src="Galerie &  Portfolio/Capture d'écran 2025-04-06 170904.png " alt="Projet Beta" class="lightboxable"><h3>Projet Beta</h3><p>Logo et réseaux sociaux.</p></div>
+                    <div class="grid-item" data-category="site-web publicite"><img src="Images/IMAGE POUR SITE DIGITALECOM_SERVICES/a propos1.jpg " alt="Projet Gamma" class="lightboxable"><h3>Projet Gamma</h3><p>E-commerce et campagne publicitaire.</p></div>
+                    <div class="grid-item" data-category="apps site-web"><img src="Galerie &  Portfolio/Gestion d'Inventaire.jpg " alt="Projet Meta" class="lightboxable"><h3>Projet Meta</h3><p>Application mobile.</p></div>
+                    <div class="grid-item" data-category="edition branding"><img src="Galerie &  Portfolio/Bonne fête de la pentecote.jpg " alt="Fête de la Pentecôte" class="lightboxable"><h3>Fête de la Pentecôte</h3><p>Édition et branding pour l'événement.</p></div>
+                    <div class="grid-item" data-category="logo publicite"><img src="Galerie &  Portfolio/flyer eatgrill.jpg " alt="Restaurant de rue" class="lightboxable"><h3>Restaurant de rue</h3><p>Logo et campagne publicitaire.</p></div>
+                    <div class="grid-item" data-category="reseaux-sociaux edition"><img src="Galerie &  Portfolio/11.jpg " alt="Édition Spéciale" class="lightboxable"><h3>Édition Spéciale</h3><p>Réseaux sociaux et édition.</p></div>
+                    <div class="grid-item" data-category="branding logo"><img src="Galerie &  Portfolio/12.jpg " alt="Identité Visuelle" class="lightboxable"><h3>Identité Visuelle</h3><p>Création de logo et branding.</p></div>
+                    <div class="grid-item" data-category="site-web apps"><img src="Galerie &  Portfolio/apps gestion inventaire.jpg " alt="Site Web et apps" class="lightboxable"><h3>Site Web et apps</h3><p>Développement web et gestion des réseaux sociaux.</p></div>
+                    <div class="grid-item" data-category="publicite edition"><img src="Galerie &  Portfolio/14.jpg " alt="Campagne Publicitaire" class="lightboxable"><h3>Campagne Publicitaire</h3><p>Édition et publicité pour un événement.</p></div>
+                    <div class="grid-item" data-category="apps branding"><img src="Galerie &  Portfolio/15.jpg " alt="Application Mobile" class="lightboxable"><h3>Application Mobile</h3><p>Développement d'une application mobile et branding.</p></div>
+                    <div class="grid-item" data-category="logo reseaux-sociaux"><img src="Galerie &  Portfolio/16.jpg " alt="Logo et Réseaux Sociaux" class="lightboxable"><h3>Logo et Réseaux Sociaux</h3><p>Création de logo et gestion des réseaux sociaux.</p></div>
+                    <div class="grid-item" data-category="site-web publicite"><img src="Galerie &  Portfolio/site web GBM.jpg " alt="Site Web et Publicité" class="lightboxable"><h3>Site Web et Publicité</h3><p>Développement web et campagne publicitaire.</p></div>
+                    <div class="grid-item" data-category="edition apps"><img src="Galerie &  Portfolio/apps gestion inventaire.jpg  " alt="Édition et Application" class="lightboxable"><h3>Édition et Application</h3><p>Édition de contenu et développement d'application.</p></div>
+                    <div class="grid-item" data-category="site-web publicite"><img src="Galerie &  Portfolio/site web DIGITALECOM.jpg" alt="Site Web et Publicité" class="lightboxable"><h3>Site Web et Publicité</h3><p>Développement web et campagne publicitaire.</p></div>
+
+            </div>
+        </section>
+
+        <section id="blog" class="page-section">
+            <div class="container">
+                          <h2>Blog - Actualités & Conseils</h2>
+                <div class="blog-post-container">
+                    <article class="blog-post">
+                        <img src=" Images/IMAGE POUR SITE DIGITALECOM_SERVICES/mariia-shalabaieva-HBkpnDVc_Ic-unsplash.jpg" alt="Tendances Marketing Digital">
+                        <div class="blog-post-content">
+                            <h3>Les 5 tendances du marketing digital en 2025</h3>
+                            <p class="blog-summary">Découvrez les stratégies incontournables pour booster votre présence en ligne cette année. Un aperçu rapide des points clés...</p>
+                            <div class="blog-full-text">
+                                <p> Le marketing digital est en constante évolution. En 2025, plusieurs tendances se démarquent et promettent de redéfinir la manière dont les entreprises interagissent avec leurs clients. Voici les cinq principales :</p>
+                                <ol>
+                                    <li><strong>L'Intelligence Artificielle (IA) personnalisée :</strong> L'IA ne se contente plus d'automatiser, elle personnalise l'expérience client à un niveau granulaire, des recommandations de produits aux parcours utilisateurs.</li>
+                                    <li><strong>Le Marketing d'Influence Authentique :</strong> Les consommateurs recherchent l'authenticité. Les marques se tournent vers des micro et nano-influenceurs dont les valeurs s'alignent réellement avec les leurs.</li>
+                                    <li><strong>La Vidéo Courte et Interactive :</strong> Des formats comme TikTok, Reels et Shorts continuent de dominer, avec un accent croissant sur l'interactivité (sondages, Q&A en direct).</li>
+                                    <li><strong>La Recherche Vocale et Visuelle :</strong> L'optimisation pour la recherche vocale (VSO) et la recherche par image devient cruciale à mesure que ces technologies gagnent en popularité.</li>
+                                    <li><strong>La Durabilité et l'Éthique au Cœur des Marques :</strong> Les consommateurs sont de plus en plus attentifs aux engagements sociaux et environnementaux des entreprises. Communiquer de manière transparente sur ces aspects est un atout majeur.</li>
+                                </ol>
+                                <p>Adopter ces tendances permettra à votre entreprise de rester compétitive et de construire des relations plus fortes avec votre audience.</p>
+                            </div>
+                            <a class="read-more-link">Lire la suite</a>
+                        </div>
+                    </article>
+                    <article class="blog-post">
+                        <img src="Images/IMAGE POUR SITE DIGITALECOM_SERVICES/shutter-speed-0uMU42uRw28-unsplash.jpg " alt="SEO en 2025">
+                        <div class="blog-post-content">
+                            <h3>Comment optimiser votre SEO pour 2025</h3>
+                            <p class="blog-summary">Les meilleures pratiques pour améliorer votre référencement naturel cette année. Un guide complet...</p>
+                            <div class="blog-full-text">
+                                <p> Le référencement naturel (SEO) continue d’évoluer, et 2025 s’annonce comme une année stratégique. Les moteurs de recherche deviennent de plus en plus intelligents, intégrant l’intelligence artificielle, la recherche vocale, l’expérience utilisateur et bien plus. Si vous voulez rester visible sur Google, voici ce que vous devez absolument maîtriser :
+                                 <ol>
+                                    <li><strong>Comprendre l'Intention de Recherche :</strong> Analysez les requêtes des utilisateurs pour créer un contenu qui répond précisément à leurs besoins.</li>
+                                    <li><strong>Optimiser pour la Recherche Vocale :</strong> Adaptez votre contenu aux questions posées à voix haute, en utilisant un langage naturel et des phrases courtes.</li>
+                                    <li><strong>Améliorer l'Expérience Utilisateur :</strong> Assurez-vous que votre site est rapide, mobile-friendly et facile à naviguer.</li>
+                                    <li><strong>Utiliser des Données Structurées :</strong> Implémentez des balisages schema.org pour aider les moteurs de recherche à comprendre votre contenu.</li>
+                                    <li><strong>Créer du Contenu de Qualité :</strong> Publiez régulièrement des articles approfondis et engageants qui répondent aux questions de votre audience.</li>
+                                 </ol>
+                                </p>
+                            </div>
+                            <a class="read-more-link">Lire la suite</a>
+                        </div>
+                    </article>
+                    <article class="blog-post">
+                        <img src="Images/IMAGE POUR SITE DIGITALECOM_SERVICES/szabo-viktor-qmvl6m4Tots-unsplash.jpg " alt="Design Graphique en 2025">
+                        <div class="blog-post-content">
+                            <h3>Les tendances du design graphique en 2025</h3>
+                            <p class="blog-summary">Explorez les nouvelles tendances qui façonnent le design graphique cette année. Un aperçu des styles émergents...</p>
+                            <div class="blog-full-text">
+                                <p>En 2025, le design graphique continue de repousser les limites de la créativité tout en s’alignant sur les exigences de l’expérience utilisateur. Que vous soyez designer, entrepreneur ou créateur de contenu, voici les tendances clés à suivre pour rester à la page cette année....</p>
+                                <ol>
+                                    <li><strong>Minimalisme Coloré :</strong> Un retour aux designs épurés mais avec des couleurs vives et audacieuses.</li>
+                                    <li><strong>Typographie Expérimentale :</strong> L'utilisation de polices personnalisées et de typographies audacieuses pour attirer l'attention.</li>
+                                    <li><strong>Illustrations 3D :</strong> Les illustrations en trois dimensions gagnent en popularité, offrant une profondeur et un réalisme inédits.</li>
+                                    <li><strong>Animations Subtiles :</strong> Des animations discrètes qui améliorent l'expérience utilisateur sans distraire.</li>
+                                    <li><strong>Sustainability Design :</strong> Un accent sur les designs écoresponsables, utilisant des matériaux durables et des pratiques respectueuses de l'environnement.</li>
+                            </div>
+                            <a class="read-more-link">Lire la suite</a>
+                        </div>
+                    </article>
+                    <article class="blog-post">
+                        <img src="Images/IMAGE POUR SITE DIGITALECOM_SERVICES/6.jpg " alt="Réseaux Sociaux en 2025">
+                        <div class="blog-post-content">
+                            <h3>Comment utiliser les réseaux sociaux pour votre entreprise en 2025</h3>
+                            <p class="blog-summary">Les stratégies clés pour maximiser votre impact sur les réseaux sociaux cette année. Un guide pratique...</p>
+                            <div class="blog-full-text">
+                                <p>En 2025, les réseaux sociaux sont bien plus que des vitrines digitales : ce sont de véritables leviers de croissance, de relation client et de vente. Les entreprises qui savent les exploiter stratégiquement prennent une vraie longueur d’avance. Voici comment utiliser efficacement les réseaux sociaux pour votre activité cette année.</p>
+                                <ol>
+                                    <li><strong>Choisir les Bonnes Plateformes :</strong> Identifiez où se trouve votre audience et concentrez vos efforts sur ces plateformes.</li>
+                                    <li><strong>Créer du Contenu Engagé :</strong> Publiez régulièrement du contenu qui suscite l'intérêt et l'interaction.</li>
+                                    <li><strong>Utiliser la Publicité Ciblée :</strong> Investissez dans des campagnes publicitaires pour atteindre des segments spécifiques de votre audience.</li>
+                                    <li><strong>Analyser les Performances :</strong> Utilisez des outils d'analyse pour suivre l'engagement et ajuster votre stratégie en conséquence.</li>
+                                    <li><strong>Interagir avec votre Communauté :</strong> Répondez aux commentaires et messages pour construire des relations solides avec vos abonnés.</li>
+                                </ol>
+                            </div>
+                            <a class="read-more-link">Lire la suite</a>
+                        </div>
+                    </article>
+                    <article class="blog-post">
+                        <img src="Images/IMAGE POUR SITE DIGITALECOM_SERVICES/solen-feyissa-HQSEvyN56K0-unsplash.jpg " alt="Email Marketing en 2025">
+                        <div class="blog-post-content">
+                            <h3>Les meilleures pratiques d'email marketing en 2025</h3>
+                            <p class="blog-summary">Comment créer des campagnes d'emailing efficaces cette année. Un guide complet pour les professionnels...</p>
+                            <div class="blog-full-text">
+                                <p>.En 2025, l’email marketing reste l’un des canaux les plus puissants pour fidéliser, vendre et engager. Mais les règles du jeu ont évolué. Les boîtes de réception sont saturées, les filtres anti-spam plus intelligents, et les internautes plus exigeants.
+
+Voici les bonnes pratiques à adopter pour réussir vos campagnes d’emailing cette année.
+                                <ol>
+                                    <li><strong>Segmentation de l'Audience :</strong> Divisez votre liste d'abonnés en segments pour envoyer des messages plus ciblés.</li>
+                                    <li><strong>Personnalisation des Contenus :</strong> Utilisez le nom de l'abonné et adaptez le contenu à ses intérêts.</li>
+                                    <li><strong>Optimisation Mobile :</strong> Assurez-vous que vos emails sont responsives et faciles à lire sur mobile.</li>
+                                    <li><strong>Tests A/B :</strong> Testez différents objets, contenus et appels à l'action pour voir ce qui fonctionne le mieux.</li>
+                            </div>
+                            <a class="read-more-link">Lire la suite</a>
+                        </div>
+                    </article>
+                    <article class="blog-post">
+                        <img src="Images/IMAGE POUR SITE DIGITALECOM_SERVICES/kenny-eliason-I6wCDYW6ij8-unsplash.jpg " alt="Publicité en 2025">
+                        <div class="blog-post-content">
+                            <h3>Les nouvelles tendances de la publicité digitale en 2025</h3>
+                            <p class="blog-summary">Découvrez comment la publicité digitale évolue cette année. Un aperçu des innovations et des stratégies gagnantes...</p>
+                            <div class="blog-full-text">
+                                <p>Le monde de la publicité digitale évolue à grande vitesse, porté par l’IA, la protection des données, et des consommateurs toujours plus exigeants. En 2025, il ne suffit plus de “cibler” et de “sponsoriser” : il faut être intelligent, utile et ultra-créatif. Voici les tendances clés à suivre cette année.</p>
+                                <ol>
+                                    <li><strong>Publicité Programmatique :</strong> L'automatisation de l'achat d'espace publicitaire pour une efficacité accrue.</li>
+                                    <li><strong>Formats Rich Media :</strong> Utilisation de vidéos interactives et de bannières dynamiques pour capter l'attention.</li>
+                                    <li><strong>Publicité Contextuelle :</strong> Annonces adaptées au contexte de navigation de l'utilisateur pour une pertinence maximale.</li>
+                                    <li><strong>Utilisation de l'IA :</strong> L'intelligence artificielle pour optimiser les campagnes en temps réel et personnaliser les messages.</li>
+                                    <li><strong>Transparence et Éthique :</strong> Les consommateurs exigent plus de transparence sur la manière dont leurs données sont utilisées dans la publicité.</li>
+                            </div>
+                            <a class="read-more-link">Lire la suite</a>
+                        </div>
+                    <!-- Autres articles de blog -->
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="page-section">
+            <div class="container">
+                <h2>Contactez-Nous</h2>
+                <form action="https://formspree.io/f/mdkzgwgr" method="POST" class="formspree-form">
+                    <div class="form-group">
+                        <label for="contact-name">Nom complet :</label>
+                        <input type="text" id="contact-name" name="name" placeholder="Votre nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Adresse e-mail :</label>
+                        <input type="email" id="contact-email" name="email" placeholder="Votre email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-subject">Sujet :</label>
+                        <input type="text" id="contact-subject" name="subject" placeholder="Sujet de votre message" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Votre message :</label>
+                        <textarea id="contact-message" name="message" placeholder="Votre message" required></textarea>
+                    </div>
+                    <button type="submit">Envoyer le Message</button>
+                </form>
+                <div class="contact-info">
+                     <p>Vous pouvez aussi nous joindre directement :</p>
+                    <p>Email : <a href="mailto:digitalecom43@gmail.com">digitalecom43@gmail.com</a></p>
+                    <p>WhatsApp : <a href="https://wa.me/074966291" target="_blank" rel="noopener">+241 074 96 62 91 </a></p>
+                </div>
+            </div>
+        </section>
+        <section id="mentions-legales" class="page-section">
+            <div class="container">
+                <h2>Mentions Légales</h2>
+                <p><strong>Nom de l’entreprise :</strong> DIGITALECOM</p>
+                <p><strong>Responsable :</strong> BOUEGNY Luce Maxi (Fondateur)</p>
+                <p><strong>Adresse :</strong> Libreville, Gabon</p>
+                <p><strong>Email :</strong> digitalecom43@gmail.com</p>
+                <p><strong>Téléphone / WhatsApp :</strong> +241 074 96 62 91 / 066 85 77 03</p>
+                <p><strong>Hébergeur du site :</strong>Netlify</p>
+                
+                <h3 id="politique-confidentialite-ancre">Politique de Confidentialité</h3>
+                <p>DIGITALECOM s'engage à ce que la collecte et le traitement de vos données, effectués à partir du site digitalecomga.netlify.app, soient conformes au règlement général sur la protection des données (RGPD) et à la loi Informatique et Libertés.</p>
+                <p>Chaque formulaire ou téléservice limite la collecte des données personnelles au strict nécessaire (minimisation des données) et indique notamment :</p>
+                <ul>
+                    <li>Quels sont les objectifs du recueil de ces données (finalités) ;</li>
+                    <li>Si ces données sont obligatoires ou facultatives pour la gestion de votre demande ;</li>
+                    <li>Qui pourra en prendre connaissance (uniquement DIGITALECOM en principe, sauf précision dans le formulaire lorsqu'une transmission à un tiers est nécessaire à la gestion de votre demande) ;</li>
+                    <li>Vos droits Informatique et Libertés et la façon de les exercer auprès de DIGITALECOM.</li>
+                </ul>
+                <p>Les données personnelles recueillies dans le cadre des services proposés sur (digitalecomga.netlify.app) sont traitées selon des protocoles sécurisés et permettent à DIGITALECOM de gérer les demandes reçues dans ses applications informatiques.</p>
+                <p>Pour toute information ou exercice de vos droits Informatique et Libertés sur les traitements de données personnelles gérés par DIGITALECOM, vous pouvez contacter son délégué à la protection des données (DPO) :</p>
+                <ul>
+                    <li>Par e-mail : digitalecom43@gmail.com</li>
+                    <li>Ou par courrier signé accompagné de la copie d’un titre d’identité à l'adresse suivante : DIGITALECOM, À l'attention du DPO, Libreville, Gabon</li>
+                </ul>
+                <p><strong>Concernant la Newsletter et le Formulaire de Contact (via Formspree) :</strong></p>
+                <p>Lorsque vous soumettez des informations via nos formulaires (contact ou inscription à la newsletter), ces données sont transmises à Formspree qui nous les achemine ensuite par e-mail. Formspree a sa propre politique de confidentialité que nous vous invitons à consulter. DIGITALECOM utilise ces informations uniquement pour répondre à vos demandes de contact ou pour vous envoyer la newsletter si vous vous y êtes inscrit. Vos données ne sont pas vendues ou transmises à des tiers par DIGITALECOM sans votre consentement explicite, en dehors du traitement nécessaire par Formspree et les outils d'emailing (Brevo, MailerLite) que nous utilisons pour l'envoi des newsletters.</p>
+                <p><strong>Consentement :</strong> En utilisant nos formulaires, vous consentez à la collecte et au traitement de vos données personnelles conformément à cette politique de confidentialité. Vous pouvez retirer votre consentement à tout moment en nous contactant.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-top-row">
+                <div class="footer-col-info">
+                    <a href="#accueil" class="footer-logo nav-link">
+                        <span class="digitale">DIGITALE</span><span class="com">COM</span>
+                        <span class="slogan">NOTRE MÉTIER<br>METTRE EN VALEUR<br>LE VÔTRE</span>
+                    </a>
+                    <h4><span class="digitale">DIGITALE</span><span class="com">COM</span></h4>
+                    <p>Haut de gué-gu_kalikak<br>Libreville_Gabon</p>
+                    <p class="phone-number">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 5px;"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/></svg>
+                        066 85 77 03
+                    </p>
+                    <div class="footer-social-icons">
+                        <a href="https://facebook.com/tonprofil" target="_blank" rel="noopener" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/tonprofil" target="_blank" rel="noopener" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://twitter.com/tonprofil" target="_blank" rel="noopener" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://tiktok.com/@tonprofil" target="_blank" rel="noopener" title="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col-newsletter">
+                    <h3>Newsletter</h3>
+                    <form action="https://formspree.io/f/mdkzgwgr" method="POST" class="newsletter-form-footer" id="newsletterForm">
+                        <input type="email" name="email" placeholder="Votre email" required>
+                        <button type="submit">S’inscrire</button>
+                    </form>
+                    <div class="newsletter-consent">
+                        <label><input type="checkbox" name="consentRGPD_newsletter" value="accepted_rgpd" required> J'accepte... <a href="#mentions-legales#politique-confidentialite-ancre" class="nav-link">politique de confidentialité</a>...</label>
+                        <label><input type="checkbox" name="consentInfo_newsletter" value="accepted_info" required> J'ai pris connaissance... <a href="#mentions-legales#politique-confidentialite-ancre" class="nav-link">politique de confidentialité</a>...</label>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-middle-links">
+                <a href="#blog" class="nav-link">Conseil & Stratégie</a>
+                <a href="#services" class="nav-link">Agence de Graphisme</a>
+                <a href="#a-propos" class="nav-link">Agence de Communication Digitale</a>
+            </div>
+            <div class="footer-bottom-row">
+                <p class="footer-copyright"><span class="digitale">DIGITALE</span><span class="com" style="color: var(--blanc);">COM</span>, tous droits réservés &copy; <span id="currentYear"></span></p>
+                <div class="footer-bottom-links">
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="#mentions-legales#politique-confidentialite-ancre" class="nav-link">Politique de confidentialité</a>
+                    <a href="#mentions-legales" class="nav-link">Mentions légales</a>
+                </div>
+                <p class="footer-infocob">Notion #web</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/+241074966291" class="whatsapp-float" target="_blank" aria-label="Contacter via WhatsApp">
+        <svg viewBox="0 0 32 32"><path d=" M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.044-.53-.044-.315 0-.76.11-1.042.315-.36.195-.945.93-1.207 1.469-.26.54-1.08 2.515-.044 4.988 1.032 2.472 2.79 4.227 4.684 5.108 2.59.99 4.504 1.49 6.254 1.49.99 0 1.963-.515 2.225-1.004.026-.05.27-.41-.08-.832-.35-.422-1.146-.93-1.518-.93zM16 .005C7.165.005 0 7.165 0 16a15.94 15.94 0 0 0 4.518 11.11L2.95 31.995l11.418-3.075A15.903 15.903 0 0 0 16 32c8.835 0 16-7.165 16-16S24.835.005 16 .005zm0 29.79c-2.335 0-4.59-.68-6.59-1.95L4.4 29.64l1.972-4.925A13.885 13.885 0 0 1 2.06 16c0-7.627 6.193-13.82 13.82-13.82S29.82 8.373 29.82 16c0 7.626-6.193 13.82-13.82 13.82z"/></svg>
+    </a>
+
+    <div id="imageLightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content-img" id="lightboxImg" alt="Image agrandie">
+        <a class="lightbox-prev" aria-label="Image précédente">&#10094;</a>
+        <a class="lightbox-next" aria-label="Image suivante">&#10095;</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pageSections = document.querySelectorAll('.page-section');
+            const headerNavLinks = document.querySelectorAll('header nav ul li a');
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navUl = document.querySelector('header nav ul');
+
+            function setActiveLink(targetId) {
+                headerNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                    const linkHref = link.getAttribute('href');
+                    if (linkHref === `#${targetId}` || linkHref === `#${targetId}#politique-confidentialite-ancre`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            function showSection(targetId, anchor) {
+                pageSections.forEach(section => {
+                    if (section.id === targetId) {
+                        section.style.display = 'block';
+                        if (anchor) {
+                            const anchorElement = document.getElementById(anchor);
+                            if (anchorElement) {
+                                setTimeout(() => anchorElement.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50); // Petit délai pour s'assurer que la section est visible
+                            } else {
+                                setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
+                            }
+                        } else {
+                             setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
+                        }
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+                setActiveLink(targetId);
+                if (navUl.classList.contains('active')) {
+                    navUl.classList.remove('active');
+                    menuToggle.innerHTML = '☰';
+                }
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.closest('header nav') || this.closest('footer') || this.classList.contains('cta-button')) {
+                        e.preventDefault();
+                        const href = this.getAttribute('href');
+                        let targetId = href.substring(1);
+                        let anchor = null;
+
+                        if (href.includes('#politique-confidentialite-ancre')) {
+                            targetId = 'mentions-legales';
+                            anchor = 'politique-confidentialite-ancre';
+                        } else if (href.includes('#')) { // Pour les autres ancres potentielles dans la même page
+                            const parts = href.split('#');
+                            if (parts.length > 1 && parts[0] === "") targetId = parts[1]; // cas #section
+                            else if (parts.length > 1) targetId = parts[1];
+
+                            if (parts.length > 2) anchor = parts[2]; // cas #section#ancre
+                        }
+                        showSection(targetId, anchor);
+                    }
+                });
+            });
+            
+            if (window.location.hash) {
+                let fullHash = window.location.hash.substring(1);
+                let targetId = fullHash;
+                let anchor = null;
+                if (fullHash.includes('#')) {
+                    const parts = fullHash.split('#');
+                    targetId = parts[0];
+                    anchor = parts[1];
+                }
+                showSection(targetId, anchor);
+            } else {
+                 setActiveLink('accueil');
+            }
+
+            menuToggle.addEventListener('click', function() {
+                navUl.classList.toggle('active');
+                this.innerHTML = navUl.classList.contains('active') ? '✕' : '☰';
+            });
+
+            document.querySelectorAll('.read-more-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const blogPostContent = this.closest('.blog-post-content');
+                    const fullText = blogPostContent.querySelector('.blog-full-text');
+                    const summaryText = blogPostContent.querySelector('.blog-summary');
+
+                    if (fullText.style.display === 'none' || fullText.style.display === '') {
+                        fullText.style.display = 'block';
+                        summaryText.style.display = 'none';
+                        this.textContent = 'Lire moins';
+                    } else {
+                        fullText.style.display = 'none';
+                        summaryText.style.display = 'block';
+                        this.textContent = 'Lire la suite';
+                    }
+                });
+            });
+            
+            const newsletterForm = document.getElementById('newsletterForm');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    const consentRGPD = newsletterForm.querySelector('input[name="consentRGPD_newsletter"]');
+                    const consentInfo = newsletterForm.querySelector('input[name="consentInfo_newsletter"]');
+                    if ((consentRGPD && !consentRGPD.checked) || (consentInfo && !consentInfo.checked)) {
+                        alert('Veuillez accepter les conditions pour vous inscrire à la newsletter.');
+                        e.preventDefault(); 
+                    }
+                });
+            }
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            const filterButtons = document.querySelectorAll('.portfolio-filters .filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-grid .grid-item');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    const filterValue = this.getAttribute('data-filter');
+                    portfolioItems.forEach(item => {
+                        const itemCategories = item.getAttribute('data-category');
+                        if (filterValue === 'all' || (itemCategories && itemCategories.includes(filterValue))) {
+                            item.classList.remove('hidden');
+                        } else {
+                            item.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+            // --- Logique de la Lightbox ---
+            const lightbox = document.getElementById('imageLightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxClose = lightbox.querySelector('.lightbox-close');
+            const lightboxPrev = lightbox.querySelector('.lightbox-prev');
+            const lightboxNext = lightbox.querySelector('.lightbox-next');
+
+            let currentImageIndex;
+            let currentImageList = [];
+
+            function openLightbox(src, index, imageList) {
+                currentImageIndex = index;
+                currentImageList = imageList;
+                lightboxImg.src = src;
+                lightbox.style.display = 'flex';
+                updateLightboxNav();
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                if (lightbox.style.display === 'flex') { // Vérifier si la lightbox est ouverte
+                    lightbox.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            }
+
+            function showPrevImage() {
+                if (currentImageIndex > 0) {
+                    currentImageIndex--;
+                    lightboxImg.src = currentImageList[currentImageIndex];
+                    updateLightboxNav();
+                }
+            }
+
+            function showNextImage() {
+                if (currentImageIndex < currentImageList.length - 1) {
+                    currentImageIndex++;
+                    lightboxImg.src = currentImageList[currentImageIndex];
+                    updateLightboxNav();
+                }
+            }
+
+            function updateLightboxNav() {
+                lightboxPrev.classList.toggle('disabled', currentImageIndex === 0);
+                lightboxNext.classList.toggle('disabled', currentImageIndex === currentImageList.length - 1);
+            }
+
+            if(lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+            if(lightboxPrev) lightboxPrev.addEventListener('click', showPrevImage);
+            if(lightboxNext) lightboxNext.addEventListener('click', showNextImage);
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+                    closeLightbox();
+                }
+            });
+
+            if(lightbox) {
+                lightbox.addEventListener('click', function(e) {
+                    if (e.target === lightbox) {
+                        closeLightbox();
+                    }
+                });
+            }
+
+            const galleryImageElements = document.querySelectorAll('#galerie .gallery-grid img.lightboxable');
+            galleryImageElements.forEach((img, index) => {
+                img.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Empêcher la propagation si l'image est dans un lien
+                    const imagesSrc = Array.from(galleryImageElements).map(i => i.src);
+                    openLightbox(img.src, index, imagesSrc);
+                });
+            });
+
+            const portfolioImageElements = document.querySelectorAll('#portfolio .portfolio-grid img.lightboxable');
+            portfolioImageElements.forEach(imgElement => {
+                imgElement.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const activeFilterButton = document.querySelector('.portfolio-filters .filter-btn.active');
+                    const currentFilter = activeFilterButton ? activeFilterButton.getAttribute('data-filter') : 'all';
+
+                    if (currentFilter === 'all') {
+                        return; 
+                    }
+
+                    const visiblePortfolioItems = Array.from(document.querySelectorAll('#portfolio .portfolio-grid .grid-item:not(.hidden) img.lightboxable'));
+                    const imagesSrc = visiblePortfolioItems.map(i => i.src);
+                    const clickedImageIndex = imagesSrc.indexOf(imgElement.src);
+
+                    if (clickedImageIndex > -1) {
+                         openLightbox(imgElement.src, clickedImageIndex, imagesSrc);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
